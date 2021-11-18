@@ -1,8 +1,8 @@
-import {Route,Navigate} from "react-router-dom"
+import {Route,Redirect} from "react-router-dom"
 import jwt_decode from "jwt-decode"
 
 const PrivateRoute:any = ({component:Component,path:Path,...rest}:any) => {
-    const isLoggedIn:string | null = localStorage.getItem("gamaServiceToken")
+    const isLoggedIn:string | null = localStorage.getItem("@gamaServiceToken")
     const isSectionActive:any =() =>{
         if(isLoggedIn===null){
             return false
@@ -16,8 +16,8 @@ const PrivateRoute:any = ({component:Component,path:Path,...rest}:any) => {
     }
 
     return (
-        <Route {...rest} render= { (props: JSX.IntrinsicAttributes) =>(
-            isSectionActive() ? <Component{...props}/>: <Navigate to="/"/>
+        <Route {...rest} render={props => (
+            isSectionActive() ? <Component{...props}/>: <Redirect to="/"/>
         ) } />
     )
 }

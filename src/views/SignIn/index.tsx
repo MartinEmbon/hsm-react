@@ -1,5 +1,5 @@
 import React, {useState,useCallback,FormEvent} from 'react'
-import {useNavigate, Link} from "react-router-dom"
+import {useHistory, Link} from "react-router-dom"
 import {toast} from "react-toastify"
 
 import Loader from "../../components/Loader/index"
@@ -15,7 +15,7 @@ interface IData {
 export default function SignUp() {
     const [data,setData]=useState<IData>({} as IData)
     const [load,setLoad]=useState(false);
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const handleSubmit = useCallback ((e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
@@ -34,14 +34,14 @@ export default function SignUp() {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                    onClose:()=> navigate("/dashboard")                           
+                    onClose:()=> history.push("/dashboard")                           
                 })                 
                 
                           
             }
         ).catch(e=>{toast.error("Oops,algo deu errado")})
         .finally(()=>setLoad(false))
-    },[data,navigate])
+    },[data,history])
 
     if(load){
         return <Loader/>

@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Project for HSM Bootcamp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`User login and sign-up form`
+`Toastify and Lottie for animations`
+
+## Yarn install for dependencies
+
+## Yarn start
 
 ## Available Scripts
 

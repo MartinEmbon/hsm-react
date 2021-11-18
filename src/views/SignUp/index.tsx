@@ -1,5 +1,5 @@
 import React, {useState,useCallback,FormEvent} from 'react'
-import {useNavigate, Link} from "react-router-dom"
+import {useHistory, Link} from "react-router-dom"
 import {toast} from "react-toastify"
 import {Container} from "./style"
 import {api} from "../../serverless/api"
@@ -15,12 +15,12 @@ interface IData {
 export default function SignUp() {
     const [data,setData]=useState<IData>({} as IData)
     const [load,setLoad]=useState(false);
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const handleSubmit = useCallback ((e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         setLoad(true)
-        api.post("session",data).then(
+        api.post("users",data).then(
             response=>{
                 setLoad(false)
                 console.log(response.data)
@@ -32,13 +32,13 @@ export default function SignUp() {
                     pauseOnHover: true,
                     draggable: true,
                     progress: undefined,
-                   onClose:()=> navigate("/signin")                           
+                   onClose:()=> history.push("/signin")                           
                 })                 
                                           
             }
         ).catch(e=>{toast.error("Oops,algo deu errado")})
         .finally(()=>setLoad(false))
-    },[data,navigate])
+    },[data,history])
 
     if(load){
         return <Loader/>
