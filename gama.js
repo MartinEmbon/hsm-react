@@ -38,9 +38,10 @@ function artistasDisponiveis(diaSemana){
     for (let i = 0;i<=listaArtistas.length;i++){
         const artistaDia = listaArtistas.filter((artista=>{           
             if(diaSemana === artista.diasDisponiveis[i]){
-                console.log(`Artista: ${artista.nome} - Estilo: ${artista.estiloMusical}`)
-            }        
-        }))        
-    }    
+                console.log(`Artista: ${artista.nome} - Estilo: ${artista.estiloMusical}`)          
+            }
+            return 
+        }))                
+    }       
 }
 artistasDisponiveis("domingo")
