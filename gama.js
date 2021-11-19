@@ -22,20 +22,17 @@ let listaArtistas = [
         estiloMusical:"Rap",
         diasDisponiveis:["sexta","sábado"]
     },
-
     {
         nome:"Liniker",
         estiloMusical:"Soul",
         diasDisponiveis:["quinta-feira","domingo"]
     },
-
     {
         nome:"Duda Beat",
         estiloMusical:"Pop",
         diasDisponiveis:["quarta-feira","sexta-feira"]
     }    
 ]
-
 
 function artistasDisponiveis(diaSemana){    
     for (let i = 0;i<=listaArtistas.length;i++){
